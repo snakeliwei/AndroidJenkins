@@ -7,9 +7,9 @@ RUN apt-get update -qq && \
 
 # Download and unzip Gradle
 WORKDIR ${USR_LOCAL}
-ENV GRADLE_URL http://services.gradle.org/distributions/gradle-2.2.1-bin.zip
-ADD ${GRADLE_URL} gradle-2.2.1-bin.zip
-RUN unzip gradle-2.2.1-bin.zip && ln -s gradle-2.2.1 gradle
+ENV GRADLE_URL http://services.gradle.org/distributions/gradle-3.2.1-bin.zip
+ADD ${GRADLE_URL} gradle-3.2.1-bin.zip
+RUN unzip gradle-3.2.1-bin.zip && ln -s gradle-3.2.1 gradle
 ENV GRADLE_HOME ${USR_LOCAL}/gradle
 
 # Config Gradle PATH
@@ -17,7 +17,7 @@ RUN echo "export PATH=${PATH}:${GRADLE_HOME}/bin" >> /etc/profile
 ENV PATH ${PATH}:${GRADLE_HOME}/bin
 
 ENV JENKINS_HOME /var/jenkins_home
-ENV JENKINS_VERSION 1.609.1
+ENV JENKINS_VERSION 2.19.4
 ENV JENKINS_UC https://updates.jenkins-ci.org
 ENV COPY_REFERENCE_FILE_LOG /var/log/copy_reference_file.log
 RUN useradd -d "${JENKINS_HOME}" -u 1000 -m -s /bin/bash jenkins
